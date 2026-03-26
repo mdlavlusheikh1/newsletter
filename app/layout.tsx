@@ -36,6 +36,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
     <html lang="en" className={geist.variable}>
       <head>
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(orgSchema) }} />
+        <script async src="https://js.sparkloop.app/embed.js?publication_id=pub_e1a695ff7d64" data-sparkloop="" />
       </head>
       <body suppressHydrationWarning className="bg-[#f8fafc] text-slate-900 antialiased font-[family-name:var(--font-geist)]">
         {isAdmin ? (
