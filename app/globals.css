@@ -1,0 +1,26 @@
+@import "tailwindcss";
+
+@layer base {
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  ::selection { background-color: rgb(37 99 235 / 0.15); }
+  ::-webkit-scrollbar { width: 5px; }
+  ::-webkit-scrollbar-track { background: #020617; }
+  ::-webkit-scrollbar-thumb { background: rgb(37 99 235 / 0.3); border-radius: 3px; }
+}
+
+@keyframes infinite-scroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+.animate-infinite-scroll {
+  animation: infinite-scroll 35s linear infinite;
+}
+
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.animate-fade-up {
+  animation: fade-up 0.7s ease forwards;
+}
