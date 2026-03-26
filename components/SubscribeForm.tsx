@@ -16,9 +16,22 @@ export default function SubscribeForm({ variant = "hero" }: { variant?: "hero" |
       body: JSON.stringify({ email }),
     });
     const data = await res.json();
-    setStatus(data.success ? "success" : "error");
-    setMessage(data.message);
-    if (data.success) setEmail("");
+    if (data.success) {
+      setStatus("success");
+      setMessage(data.message);
+      // Notify SparkLoop of successful signup
+      try {
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        const sl = (window as any).SparkLoop;
+        if (sl && typeof sl.submitForm === "function") {
+          sl.submitForm(email);
+        }
+      } catch {}
+      setEmail("");
+    } else {
+      setStatus("error");
+      setMessage(data.message);
+    }
   }
 
   if (variant === "hero") {

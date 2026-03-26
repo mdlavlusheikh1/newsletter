@@ -4,6 +4,7 @@ import NewsletterCard from "@/components/NewsletterCard";
 import { getAllNewsletters } from "@/lib/newsletters";
 import Link from "next/link";
 import SubscribeForm from "@/components/SubscribeForm";
+import { Zap, Target, Mail } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "The AI Operator — AI & Automation Newsletter",
@@ -11,9 +12,9 @@ export const metadata: Metadata = {
 };
 
 const features = [
-  { icon: "⚡", title: "Actionable every time", desc: "No fluff. Each issue gives you tools and workflows you can use the same day." },
-  { icon: "🎯", title: "USA market focused", desc: "Curated for professionals operating in the US economy and tech landscape." },
-  { icon: "📬", title: "One email per week", desc: "Every Tuesday morning. No spam, no noise. Unsubscribe in one click." },
+  { icon: Zap, title: "Actionable every time", desc: "No fluff. Each issue gives you tools and workflows you can use the same day.", color: "text-blue-600 bg-blue-50" },
+  { icon: Target, title: "USA market focused", desc: "Curated for professionals operating in the US economy and tech landscape.", color: "text-violet-600 bg-violet-50" },
+  { icon: Mail, title: "One email per week", desc: "Every Tuesday morning. No spam, no noise. Unsubscribe in one click.", color: "text-emerald-600 bg-emerald-50" },
 ];
 
 export default function HomePage() {
@@ -28,9 +29,11 @@ export default function HomePage() {
       {/* Why subscribe */}
       <section className="py-20 px-6 bg-white border-y border-slate-100">
         <div className="max-w-5xl mx-auto grid grid-cols-1 sm:grid-cols-3 gap-8">
-          {features.map(({ icon, title, desc }) => (
+          {features.map(({ icon: Icon, title, desc, color }) => (
             <div key={title} className="flex gap-4">
-              <span className="text-2xl shrink-0">{icon}</span>
+              <div className={`w-10 h-10 rounded-xl flex items-center justify-center shrink-0 ${color}`}>
+                <Icon className="w-5 h-5" />
+              </div>
               <div>
                 <h3 className="font-bold text-slate-800 mb-1">{title}</h3>
                 <p className="text-slate-500 text-sm leading-relaxed">{desc}</p>
